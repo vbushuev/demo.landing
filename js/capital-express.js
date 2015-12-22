@@ -52,6 +52,7 @@ $("#ke_summSlider").slider({
 	value : 300000,
 	change : function () {
 		ke.reload("slider");
+		$("#ke_small_summ").val($("#ke_summ").val());
 	}
 });
 $("#ke_srokSlider").slider({
@@ -67,6 +68,7 @@ $("#ke_srokSlider").slider({
 });
 $("#ke_type").change(function () {
 	ke.reload("rate");
+	$("#ke_small_type").val($("#ke_type").val()).trigger("change");
 	$("#ke_summSlider").slider({
 		max : (ke.rate == 0.65) ? 300000 : 1000000
 	});
@@ -83,6 +85,7 @@ $("#ke_type").change(function () {
 });
 $("#ke_summ").change(function () {
 	ke.reload("input");
+	$("#ke_small_summ").val($(this).val());
 });
 $("#ke_srok").change(function () {
 	ke.reload("input");
@@ -101,7 +104,7 @@ var ke = {
 	scheludeActive : false,
 	counter : 0,
 	reload : function (type) {
-		this.rate = $("#ke_type").val() == "Без залога" ? 0.65 : 0.5;
+		this.rate = $("#ke_type").val() == "Р‘РµР· Р·Р°Р»РѕРіР°" ? 0.65 : 0.5;
 
 		//a+b*0.8=300; a+b*0.7=1000 => a=5900; b=-7000
 		$("#ke_summ").attr("max", (5900000 - 7000000 * this.rate));
@@ -149,18 +152,18 @@ var ke = {
 	},
 	countEffect : function (obj, res) {
 		this.counter++;
-		var now = obj.text().replace(" руб.", "");
+		var now = obj.text().replace(" СЂСѓР±.", "");
 		now = +now.replaceAll(" ", "");
 
 		if (Math.abs(res - now) > 10 && this.counter < 10) {
 			var i = (res - now) / 2;
-			obj.text(number_format(now + i, 0, ",", " ") + " руб.");
+			obj.text(number_format(now + i, 0, ",", " ") + " СЂСѓР±.");
 			var _this = this;
 			setTimeout(function () {
 				_this.countEffect(obj, res);
 			}, 45);
 		} else {
-			obj.text(number_format(res, 0, ",", " ") + " руб.");
+			obj.text(number_format(res, 0, ",", " ") + " СЂСѓР±.");
 			this.counter = 0;
 		}
 	}
@@ -169,8 +172,6 @@ var ke = {
 //ke schelude
 var ke_schelude_small = false;
 $("#ke_scheludeButton").click(function () {
-  yaCounter14063395.reachGoal('graph');
-  
 	$(this).hide();
 	var s = $("#ke_summSlider").slider("value");
 	var t = $("#ke_srokSlider").slider("value");
@@ -184,14 +185,14 @@ $("#ke_scheludeButton").click(function () {
 
 	var dateNow=new Date();
   var daysInMon=[];
-  
+
   for (var i=1; i<=t; i++){
     var dateLast = dateNow;
     var dateNow = new Date();
     dateNow.setMonth( dateNow.getMonth()+i );
     daysInMon.push( (dateNow - dateLast)/(1000*60*60*24) );
   }
-  
+
 	for (var i = 0; i < t; i++) {
 		var arr = [];
 		arr[0] = i + 1;
@@ -206,8 +207,8 @@ $("#ke_scheludeButton").click(function () {
 			total[j] = total[j] + arr[j];
 		}
 	}
-  
-	total[0] = "Итого";
+
+	total[0] = "РС‚РѕРіРѕ";
 	total[4] = " - ";
 	tableConstructor(sch, total, true);
 
@@ -247,9 +248,14 @@ $("#ke_scheludeClose").click(function () {
 
 //form
 $("#ke_small_type").change(function () {
-	if ($(this).val() == "Без залога") {
+	if ($(this).val() == "Р‘РµР· Р·Р°Р»РѕРіР°") {
 		$("#ke_small_auto").parent().hide();
+		$("#ke_small_build").parent().hide();
+	} else if ($(this).val() == "Р—Р°Р»РѕРі РЅРµРґРІРёР¶РёРјРѕСЃС‚Рё") {
+		$("#ke_small_auto").parent().hide();
+		$("#ke_small_build").parent().effect("slide");
 	} else {
+		$("#ke_small_build").parent().hide();
 		$("#ke_small_auto").parent().effect("slide");
 	}
 });
@@ -290,10 +296,10 @@ $("#ke_small_submit").click(function () {
 			type : inp.attr("type")
 		});
 	});
-	//просто костыли
-	arr[arr.length - 1].name = "Согласие на обработку данных";
+	//РїСЂРѕСЃС‚Рѕ РєРѕСЃС‚С‹Р»Рё
+	arr[arr.length - 1].name = "РЎРѕРіР»Р°СЃРёРµ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ РґР°РЅРЅС‹С…";
 
-	var auto = $("#ke_small_type").val() == "Без залога" ? false : true;
+	var auto = $("#ke_small_type").val() == "Р‘РµР· Р·Р°Р»РѕРіР°" ? false : true;
 
 	var error = [];
 	for (var i = 0; i < arr.length; i++) {
@@ -322,12 +328,12 @@ $("#ke_small_submit").click(function () {
 			if (data == "ok") {
 				$("#ke_form_small").find(".row").hide();
 				$("#ke_form_small").find(".formTabs")
-				.append("<div id='thx_ke_small'><h2>Спасибо, " + $("#ke_small_name").val() + "!<br/></h2></div>");
+				.append("<div id='thx_ke_small'><h2>РЎРїР°СЃРёР±Рѕ, " + $("#ke_small_name").val() + "!<br/></h2></div>");
 				$("#thx_ke_small")
-				.append("Заявка успешно отправлена. Наш специалист позвонит Вам по телефону ")
+				.append("Р—Р°СЏРІРєР° СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅР°. РќР°С€ СЃРїРµС†РёР°Р»РёСЃС‚ РїРѕР·РІРѕРЅРёС‚ Р’Р°Рј РїРѕ С‚РµР»РµС„РѕРЅСѓ ")
 				.append("<em>" + $("#ke_small_phone").val() + "</em> ")
-				.append("в ближайшее время.")
-				.append("<hr/>Если указанный номер телефона неверный, <a id='return_ke_small_form'>отправте заявку еще раз</a>.");
+				.append("РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.")
+				.append("<hr/>Р•СЃР»Рё СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РЅРµРІРµСЂРЅС‹Р№, <a id='return_ke_small_form'>РѕС‚РїСЂР°РІС‚Рµ Р·Р°СЏРІРєСѓ РµС‰Рµ СЂР°Р·</a>.");
 
 				$("#return_ke_small_form").click(function () {
 					$("#thx_ke_small").remove();
@@ -343,7 +349,7 @@ $("#ke_small_submit").click(function () {
 					"scrollTop" : scroll - 200
 				}, 1000);
 			} else {
-				modal.show("Что-то пошло не так и заявка не отправлена. Вы можете позвонить по телефону: <span class='white'>" + $("#from_mark").val() + "</span>");
+				modal.show("Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє Рё Р·Р°СЏРІРєР° РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°. Р’С‹ РјРѕР¶РµС‚Рµ РїРѕР·РІРѕРЅРёС‚СЊ РїРѕ С‚РµР»РµС„РѕРЅСѓ: <span class='white'>" + $("#from_mark").val() + "</span>");
 			}
 		});
 	} else {
@@ -351,7 +357,7 @@ $("#ke_small_submit").click(function () {
 			backgroundColor : "#fce3bb",
 			border : "1px solid red"
 		};
-		var err_list = "Заполните обязательные поля:<hr/> <ul class='my_ul'>";
+		var err_list = "Р—Р°РїРѕР»РЅРёС‚Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ:<hr/> <ul class='my_ul'>";
 		for (var i = 0; i < error.length; i++) {
 			if (inpts.eq(error[i].id).find("input").attr("type") == "checkbox") {
 				inpts.eq(error[i].id).css(error_css);
@@ -368,7 +374,7 @@ $("#ke_small_submit").click(function () {
 function ke_formValidation(obj, auto) {
 	var val = obj.val;
 	var name = obj.name;
-	var type = (obj.type == "text" && name == "Автомобиль") ? "auto" : obj.type;
+	var type = (obj.type == "text" && name == "РђРІС‚РѕРјРѕР±РёР»СЊ") ? "auto" : obj.type;
 
 	switch (type) {
 	case 'select':
@@ -378,7 +384,7 @@ function ke_formValidation(obj, auto) {
 		if (parseInt(val.replaceAll(' ', '')) >= 100000) {
 			return 'ok';
 		} else {
-			return ': требуется ввести число, больше 100 000';
+			return ': С‚СЂРµР±СѓРµС‚СЃСЏ РІРІРµСЃС‚Рё С‡РёСЃР»Рѕ, Р±РѕР»СЊС€Рµ 100 000';
 		}
 		break;
 
@@ -386,7 +392,7 @@ function ke_formValidation(obj, auto) {
 		if ((val.replaceAll(' ', '')).length >= 5 || !auto) {
 			return 'ok';
 		} else {
-			return ': недостаточно символов';
+			return ': РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃРёРјРІРѕР»РѕРІ';
 		}
 		break;
 
@@ -394,7 +400,7 @@ function ke_formValidation(obj, auto) {
 		if ((val.replaceAll(' ', '')).length >= 2) {
 			return 'ok';
 		} else {
-			return ': недостаточно символов';
+			return ': РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃРёРјРІРѕР»РѕРІ';
 		}
 		break;
 
@@ -404,17 +410,17 @@ function ke_formValidation(obj, auto) {
 			if ((val_replaced + "").length >= 7) {
 				return 'ok';
 			} else {
-				return ': недостаточно цифр';
+				return ': РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ С†РёС„СЂ';
 			}
 		} else {
-			return ': присутствуют недопустимые символы';
+			return ': РїСЂРёСЃСѓС‚СЃС‚РІСѓСЋС‚ РЅРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹';
 		}
 		break;
 	case 'checkbox':
 		if (val == true) {
 			return 'ok';
 		} else {
-			return ': не подтверждено';
+			return ': РЅРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРѕ';
 		}
 		break;
 	}
@@ -429,7 +435,7 @@ $("#ke_call_me").click(function () {
 	var template = $("#template_call_me").html();
 	modal.show(template);
 	modal.el.find("a:last").remove();
-	modal.el.append('<a class="button" id="call_me_send">Отправить</a>');
+	modal.el.append('<a class="button" id="call_me_send">РћС‚РїСЂР°РІРёС‚СЊ</a>');
 
 	$.get(
 		"./server/php/getTime.php", {
@@ -441,7 +447,7 @@ $("#ke_call_me").click(function () {
 	modal.el.find("#call_me_phone").inputmask("+7 (999) 999 99 99");
 
 	$("#call_me_day").change(function () {
-		if ($(this).val() == "Другой день") {
+		if ($(this).val() == "Р”СЂСѓРіРѕР№ РґРµРЅСЊ") {
 			$("#call_me_invisible").effect("slide");
 		} else {
 			$("#call_me_invisible").hide();
@@ -481,9 +487,9 @@ $("#ke_call_me").click(function () {
 				function (data) {
 				if (data == "ok") {
 					var tel = modal.el.find("#call_me_phone").val();
-					modal.show("Заявка на обратный звонок успешно отправлена<br/>Мы свяжемся с Вами по телефону <em>" + tel + "</em> в указанное время.");
+					modal.show("Р—Р°СЏРІРєР° РЅР° РѕР±СЂР°С‚РЅС‹Р№ Р·РІРѕРЅРѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅР°<br/>РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ Р’Р°РјРё РїРѕ С‚РµР»РµС„РѕРЅСѓ <em>" + tel + "</em> РІ СѓРєР°Р·Р°РЅРЅРѕРµ РІСЂРµРјСЏ.");
 				} else {
-					modal.show("Что-то пошло не так и заявка не отправлена. Вы можете позвонить по телефону: <span class='white'>" + $("#from_mark").val() + "</span>");
+					modal.show("Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє Рё Р·Р°СЏРІРєР° РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°. Р’С‹ РјРѕР¶РµС‚Рµ РїРѕР·РІРѕРЅРёС‚СЊ РїРѕ С‚РµР»РµС„РѕРЅСѓ: <span class='white'>" + $("#from_mark").val() + "</span>");
 				}
 			});
 		} else {
@@ -503,13 +509,13 @@ function CallMeValidation(arr) {
 	if ((val_replaced + "").length >= 7) {
 		newarr.push('ok');
 	} else {
-		newarr.push(' Недостаточно цифр');
+		newarr.push(' РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ С†РёС„СЂ');
 	}
 
 	newarr.push('ok');
-	if (arr[1] == 'Другой день') {
+	if (arr[1] == 'Р”СЂСѓРіРѕР№ РґРµРЅСЊ') {
 		if ((typeof(arr[2]) == 'undefined') || (arr[2] == '')) {
-			newarr.push(' Укажите день');
+			newarr.push(' РЈРєР°Р¶РёС‚Рµ РґРµРЅСЊ');
 		} else {
 			newarr.push('ok');
 		}
@@ -518,7 +524,7 @@ function CallMeValidation(arr) {
 	}
 
 	if (typeof(arr[3]) == 'undefined' || arr[3] == '') {
-		newarr.push(' Укажите время');
+		newarr.push(' РЈРєР°Р¶РёС‚Рµ РІСЂРµРјСЏ');
 	} else {
 		newarr.push('ok');
 	}

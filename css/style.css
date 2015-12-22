@@ -1,12 +1,37 @@
-@import url("font-awesome.min.css");
+@import url("font-awesome-4.5.0/css/font-awesome.min.css");
 @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,cyrillic-ext");
+@import url("https://fonts.googleapis.com/css?family=Poiret+One&subset=latin,cyrillic");
 
 /*
 	Arcana by HTML5 UP
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
- 
+
+html {
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:16pt;
+  font-family: 'Source Sans Pro','Roboto Condensed','Poiret One';
+  font-weight: 300;
+  vertical-align:baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body{
+  line-height:1;
+  -webkit-text-size-adjust:none;
+}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+.not-global,.not-wide{display:none!important}
+.only-normal,.only-narrow,.only-narrower,.only-mobile,.only-mobilep{display:none!important}
+
 /* Basic */
 
 	body,
@@ -29,7 +54,7 @@
 
 	body, input, select, textarea {
 		color: #474747;
-		font-family: pragmatica,Helvetica,Arial,sans-serif;
+		font-family: 'Source Sans Pro','Roboto Condensed','Poiret One';
 		font-size: 16pt;
 		font-weight: 300;
 		line-height: 1.65em;
@@ -56,7 +81,8 @@
 	}
 
 	em, i {
-		font-style: italic;
+		font-style: normal;
+    font-weight: 300;
 	}
 
 	p, ul, ol, dl, table, blockquote {
@@ -174,8 +200,8 @@
 		text-decoration: none;
 		width: 100%;
 	}
-  
-  
+
+
 	input[type="text"], input[type="tel"],
 	input[type="password"],
 	input[type="email"],
@@ -587,10 +613,12 @@
 		text-align: center;
 		padding: 0;
 		background-color: #fff;
-		background-image: url("images/bg02.png"), url("images/bg02.png"), url("images/bg01.png");
+		/*
+    background-image: url("images/bg02.png"), url("images/bg02.png"), url("images/bg01.png");
 		background-position: top left,					top left,					top left;
 		background-size: 100% 6em,					100% 6em,					auto;
 		background-repeat: no-repeat,					no-repeat,					repeat;
+    */
 	}
 
 		#header h1 {
@@ -727,7 +755,7 @@
 		}
 
 /* Banner */
-      
+
 	#banner {
 		background-image: url("../images/banner_2.jpg");
 		background-position: center 70%;
@@ -781,12 +809,11 @@
 		padding: 2.5em 0 1.5em 0;
 	}
 
-		.wrapper.style1 {
+		.wrapper.style1,.wrapper.style2,.wrapper.style3 {
 			background: #fff;
 		}
 
 		.wrapper.style2 {
-			background-color: #fff;
 			background-image: url("images/bg02.png"), url("images/bg03.png"), url("images/bg01.png");
 			background-position: top left,						bottom left,					top left;
 			background-size: 100% 6em,						100% 6em,						auto;
@@ -794,13 +821,13 @@
 		}
 
 		.wrapper.style3 {
-			background-color: #3a5c89;
-			background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			background-color:  #01b6ed;
+      background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
 			background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			color: white;
+			color: #fff;
 		}
 
 			.wrapper.style3 .button {
@@ -869,7 +896,7 @@
 			text-align: center;
 			font-size: 0.9em;
 		}
-		
+
 /* MY styles */
 .center{
 	text-align: center;
@@ -897,7 +924,7 @@
 	color: white;
 	position: absolute;
 	padding: 1em;
-	max-width: 72%;	
+	max-width: 72%;
 	z-index: 101;
   font-size: 0.75em;
   line-height: 1.5;
@@ -930,14 +957,15 @@
 	height: 100%;
 	background: rgba(27, 27, 27, 0.25);
 	z-index: 100;
-}*/
+}
+*/
 .modal{
 	display: none;
 	background: rgba(255, 255, 255, 1);
 	color: #333333;
 	position: absolute;
 	padding: 1em;
-	max-width: 72%;	
+	max-width: 72%;
 	z-index: 101;
 	font-size: 0.75em;
 	line-height: 1.5em;
@@ -980,12 +1008,12 @@
 	#banner_avtozalog {
 		background-image: url("../images/car.jpg");
 		background-position: right center;
-		background-size: cover; 
+		background-size: cover;
 		height: 22em;
 		text-align: center;
 		position: relative;
 	}
-	
+
 	#banner_avtozalog h1{
 		margin-top: 3em;
 	}
@@ -999,7 +1027,7 @@
 			background: rgba(27, 27, 27, 0.75);
 			color: #fff;
 			padding: 1.5em 0;
-      
+
 		}
 
 			#banner_avtozalog header h2 {
@@ -1033,43 +1061,33 @@
 
 /* Banner capital_exp */
 
-	#banner_ke {
-    background-image: url("../images/mount_3.jpg");
-		background-position: center 75%;
-		background-size: cover; 
-		height: 22em;
-		text-align: center;
-		position: relative;
-	}
-	
-	#banner_ke h1{
-		margin-top: 3em;
-	}
-
-		#banner_ke header {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			background: #212121;
-			background: rgba(27, 27, 27, 0.75);
-			color: #fff;
-			padding: 1.5em 0;
-		}
-
-			#banner_ke header h2 {
-				display: inline-block;
-				margin: 0;
-				font-size: 1.25em;
-				vertical-align: middle;
-        text-align: left;
-         margin-left: 0.5em;
-         line-height: 1.05em;
-			}
-
-				#banner_ke header h2 em {
-					opacity: 0.75;
-				}
+#banner_ke {
+  text-align: center;
+  position: relative;
+  width:100%;
+  height:6em;
+  line-height: 3em;
+  vertical-align: top;
+}
+#banner_ke header {
+  position: relative;
+  width: 100%;
+  color: #212121;
+  height:6em;
+}
+#banner_ke header h2 {
+  display: inline-block;
+  margin: 0;
+  top:0;
+  vertical-align: middle;
+  text-align: left;
+}
+#banner_ke header sup {
+  opacity: 0.75;
+  height:1em;
+  line-height: 1em;
+  display: inline-block;
+}
 
 				#banner_ke header h2 a {
 					border-bottom-color: transparent;
@@ -1084,8 +1102,8 @@
 			#banner_ke .button {
 				vertical-align: middle;
 				margin-left: 1em;
-			}      
-      
+			}
+
 #avtozalog_summSlider, #avtozalog_srokSlider, #ke_summSlider, #ke_srokSlider{
 	margin: 0;
   margin-top: 1em;
@@ -1167,7 +1185,7 @@ input[type="checkbox"]{
   bottom: -16px;
   left: 35%;
   width: 0;
-} 
+}
 
 .calcCounter{
   position: absolute;
@@ -1225,6 +1243,7 @@ input[type="checkbox"]{
 
 .small{
   font-size: 0.8em;
+  font-weight: 300;
 }
 .phone{
   display: block;
@@ -1262,15 +1281,15 @@ input[type="checkbox"]{
   font-weight: 600;
 }
 #main_avtozalog{
-  background-image: url('../images/car.jpg'); 
-  background-repeat: no-repeat; 
+  background-image: url('../images/car.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 2em;
   background-position: right center;
 }
 #main_ke{
   background-image: url("../images/mount_3.jpg");
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: 65% 75%;
   padding-bottom: 2em;
@@ -1307,7 +1326,7 @@ input[type="checkbox"]{
 			color: #3a5c89;
 			border-bottom-color: transparent;
 		}
-    
+
 .crumbs{
   text-align: left;
   margin-left: 3em;
@@ -1334,14 +1353,14 @@ input[type="checkbox"]{
   padding: 0.25em;
 }
 
-#ke_tabs_accord .ke_tab{ 
+#ke_tabs_accord .ke_tab{
   display: none;
 }
-#ke_tabs_accord h4{ 
+#ke_tabs_accord h4{
   color: #3a5c89;
   cursor: pointer;
 }
-#ke_tabs_accord h4:before{ 
+#ke_tabs_accord h4:before{
   content: '';
 }
 #ke_tabs_accord .activeTab:before{
@@ -1366,8 +1385,10 @@ input[type="checkbox"]{
   padding: 0.5em;
   padding-top: 1.25em;
   text-align: left;
+  /*
   background: rgba(57, 57, 57, 0.75);
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  */
   display: inline-block;
   text-shadow: 1px 1px 3px #000, 0px 0px 0px #bbb, 1px 1px #000;
 }
@@ -1443,6 +1464,248 @@ header.major .ing ul li {
 header.major .ing h2 {
   font-size: 20px;
 }
+.row{
+	border-bottom:solid 1px transparent
+}
+.row>*{
+	float:left
+}
+.row:after,.row:before{
+	content:"";display:block;clear:both;height:0
+}
+.row.uniform>*>:first-child{
+	margin-top:0
+}
+.row.uniform>*>:last-child{
+	margin-bottom:0
+}
+.\31 2u,.\31 2u\24{
+	width:100%;clear:none;margin-left:0
+}
+.\31 1u,.\31 1u\24{
+	width:91.6666666667%;clear:none;margin-left:0
+}
+.\31 0u,.\31 0u\24{
+	width:83.3333333333%;clear:none;margin-left:0
+}
+.\39 u,.\39 u\24{
+	width:75%;clear:none;margin-left:0
+}
+.\38 u,.\38 u\24{
+	width:66.6666666667%;clear:none;margin-left:0
+}
+.\37 u,.\37 u\24{
+	width:58.3333333333%;clear:none;margin-left:0
+}
+.\36 u,.\36 u\24{
+	width:50%;clear:none;margin-left:0
+}
+.\35 u,.\35 u\24{
+	width:41.6666666667%;clear:none;margin-left:0
+}
+.\34 u,.\34 u\24{
+	width:33.3333333333%;clear:none;margin-left:0
+}
+.\33 u,.\33 u\24{
+	width:25%;clear:none;margin-left:0
+}
+.\32 u,.\32 u\24{
+	width:16.6666666667%;clear:none;margin-left:0
+}
+.\31 u,.\31 u\24{
+	width:8.3333333333%;clear:none;margin-left:0
+}
+.\31 2u\24+*,.\31 1u\24+*,.\31 0u\24+*,.\39 u\24+*,.\38 u\24+*,.\37 u\24+*,.\36 u\24+*,.\35 u\24+*,.\34 u\24+*,.\33 u\24+*,.\32 u\24+*,.\31 u\24+*{
+	clear:left;
+}
+.\-11u{
+	margin-left:91.6666666667%
+}
+.\-10u{
+	margin-left:83.3333333333%
+}
+.\-9u{
+	margin-left:75%
+}
+.\-8u{
+	margin-left:66.6666666667%
+}
+.\-7u{
+	margin-left:58.3333333333%
+}
+.\-6u{
+	margin-left:50%
+}
+.\-5u{
+	margin-left:41.6666666667%
+}
+.\-4u{
+	margin-left:33.3333333333%
+}
+.\-3u{
+	margin-left:25%
+}
+.\-2u{
+	margin-left:16.6666666667%
+}
+.\-1u{
+	margin-left:8.3333333333%
+}
+.\31 2u\28 1\29,.\31 2u\24\28 1\29{
+	width:100%;clear:none;margin-left:0
+}
+.\31 1u\28 1\29,.\31 1u\24\28 1\29{
+	width:91.6666666667%;clear:none;margin-left:0
+}
+.\31 0u\28 1\29,.\31 0u\24\28 1\29{
+	width:83.3333333333%;clear:none;margin-left:0
+}
+.\39 u\28 1\29,.\39 u\24\28 1\29{
+	width:75%;clear:none;margin-left:0
+}
+.\38 u\28 1\29,.\38 u\24\28 1\29{
+	width:66.6666666667%;clear:none;margin-left:0
+}
+.\37 u\28 1\29,.\37 u\24\28 1\29{
+	width:58.3333333333%;clear:none;margin-left:0
+}
+.\36 u\28 1\29,.\36 u\24\28 1\29{
+	width:50%;clear:none;margin-left:0
+}
+.\35 u\28 1\29,.\35 u\24\28 1\29{
+	width:41.6666666667%;clear:none;margin-left:0
+}
+.\34 u\28 1\29,.\34 u\24\28 1\29{
+	width:33.3333333333%;clear:none;margin-left:0
+}
+.\33 u\28 1\29,.\33 u\24\28 1\29{
+	width:25%;clear:none;margin-left:0
+}
+.\32 u\28 1\29,.\32 u\24\28 1\29{
+	width:16.6666666667%;clear:none;margin-left:0
+}
+.\31 u\28 1\29,.\31 u\24\28 1\29{
+	width:8.3333333333%;clear:none;margin-left:0
+}
+.\31 2u\24\28 1\29+*,.\31 1u\24\28 1\29+*,.\31 0u\24\28 1\29+*,.\39 u\24\28 1\29+*,.\38 u\24\28 1\29+*,.\37 u\24\28 1\29+*,.\36 u\24\28 1\29+*,.\35 u\24\28 1\29+*,.\34 u\24\28 1\29+*,.\33 u\24\28 1\29+*,.\32 u\24\28 1\29+*,.\31 u\24\28 1\29+*{
+	clear:left;
+}
+.\-11u\28 1\29{
+	margin-left:91.6666666667%
+}
+.\-10u\28 1\29{
+	margin-left:83.3333333333%
+}
+.\-9u\28 1\29{
+	margin-left:75%
+}
+.\-8u\28 1\29{
+	margin-left:66.6666666667%
+}
+.\-7u\28 1\29{
+	margin-left:58.3333333333%
+}
+.\-6u\28 1\29{
+	margin-left:50%
+}
+.\-5u\28 1\29{
+	margin-left:41.6666666667%
+}
+.\-4u\28 1\29{
+	margin-left:33.3333333333%
+}
+.\-3u\28 1\29{
+	margin-left:25%
+}
+.\-2u\28 1\29{
+	margin-left:16.6666666667%
+}
+.\-1u\28 1\29{
+	margin-left:8.3333333333%
+}
 
-
-
+.container{
+	margin-left:auto;margin-right:auto;width:1200px
+}
+.container.\31 25\25{
+	width:100%;max-width:1500px;min-width:1200
+}
+.container.\37 5\25{
+	width:900px
+}
+.container.\35 0\25{
+	width:600px
+}
+.container.\32 5\25{
+	width:300px
+}
+.row>*{
+	padding:40px 0 0 40px
+}
+.row{
+	margin:-40px 0 -1px -40px
+}
+.row.uniform>*{
+	padding:40px 0 0 40px
+}
+.row.uniform{
+	margin:-40px 0 -1px -40px
+}
+.row.\32 00\25>*{
+	padding:80px 0 0 80px
+}
+.row.\32 00\25{
+	margin:-80px 0 -1px -80px
+}
+.row.uniform.\32 00\25>*{
+	padding:80px 0 0 80px
+}
+.row.uniform.\32 00\25{
+	margin:-80px 0 -1px -80px
+}
+.row.\31 50\25>*{
+	padding:60px 0 0 60px
+}
+.row.\31 50\25{
+	margin:-60px 0 -1px -60px
+}
+.row.uniform.\31 50\25>*{
+	padding:60px 0 0 60px
+}
+.row.uniform.\31 50\25{
+	margin:-60px 0 -1px -60px
+}
+.row.\35 0\25>*{
+	padding:20px 0 0 20px
+}
+.row.\35 0\25{
+	margin:-20px 0 -1px -20px
+}
+.row.uniform.\35 0\25>*{
+	padding:20px 0 0 20px
+}
+.row.uniform.\35 0\25{
+	margin:-20px 0 -1px -20px
+}
+.row.\32 5\25>*{
+	padding:10px 0 0 10px
+}
+.row.\32 5\25{
+	margin:-10px 0 -1px -10px
+}
+.row.uniform.\32 5\25>*{
+	padding:10px 0 0 10px
+}
+.row.uniform.\32 5\25{
+	margin:-10px 0 -1px -10px
+}
+.row.\30 \25>*{
+	padding:0
+}
+.row.\30 \25{
+	margin:0 0 -1px 0
+}
+body, input, select, textarea {
+  font-size: 14pt;
+  line-height: 1.5em;
+}
