@@ -136,33 +136,31 @@ pass 7F:pkQWJ
     							<!--<section class="12u 12u(2)">
     								<h2 class="center" style="margin-bottom: -20px;">Краткая заявка</h2>
     							</section>-->
-                  <section class="4u 12u(2)">
+                                <section class="4u 12u(2)">
     								<label for="ke_small_type">
     									<span>Вид займа:</span>
-    									<select class="inputSelect" id="ke_small_type" type="select">
-                        <option>Без залога</option>
-                        <option>Залог недвижимости</option>
-                        <option>Залог автомобиля</option>
-                      </select>
+    									<select class="inputSelect" id="ke_small_type" type="select" name="UF_CRM_1450769723">
+                                            <option value="CD">Без залога</option>
+                                            <option value="CDN">Залог недвижимости</option>
+                                            <option value="CDA">Залог автомобиля</option>
+                                        </select>
     								</label>
     							</section>
     							<section class="4u 12u(2)">
     								<label for="ke_small_summ">
     									<span>Сумма займа:</span>
-    									<input type="number" class="inputNumber" id="ke_small_summ" value="400000" tooltip="Укажите необходимый размер лимита (в рублях) <hr/>
-                                 ✓ Например: 400 000">
+    									<input type="number" name="OPPORTUNITY" class="inputNumber" id="ke_small_summ" value="400000" tooltip="Укажите необходимый размер лимита (в рублях) <hr/> ✓ Например: 400 000">
+                                        <input type="hidden" name="CURRENCY_ID" value="RUB">
     								</label>
     							</section>
     							<section class="4u 12u(2)">
     								<label for="ke_small_auto" style="display: none;">
     									<span>Автомобиль:</span>
-    									<input type="text" id="ke_small_auto" tooltip="Укажите марку, модель и год выпуска автомобиля <hr/>
-                                 ✓ Например: Opel Astra 2010">
+    									<input type="text" name="UF_CRM_1450772521" id="ke_small_auto" tooltip="Укажите марку, модель и год выпуска автомобиля <hr/>✓ Например: Opel Astra 2010">
     								</label>
-                    <label for="ke_small_build" style="display: none;">
+                                    <label for="ke_small_build" style="display: none;">
     									<span>Недвижимость:</span>
-    									<input type="text" id="ke_small_build" tooltip="Укажите объект недвижимости <hr/>
-                                 ✓ Например: Квартира ул. Милашенкова д.1, 83">
+    									<input type="text" name="UF_CRM_1450772521" id="ke_small_build" value="Квартира ул. Милашенкова д.1, 83" tooltip="Укажите объект недвижимости <hr/>✓ Например: Квартира ул. Милашенкова д.1, 83">
     								</label>
     							</section>
     						</div>
@@ -170,14 +168,14 @@ pass 7F:pkQWJ
     							<section class="4u 12u(2)">
     								<label for="ke_small_phone">
     									<span>Телефон:</span>
-    									<input type="tel" id="ke_small_phone" mask="+7 (999) 999 99 99" tooltip="Укажите телефон для связи <hr/>
-    										   ✓ Например: 8 123 456 78 90">
-    								</label>
+    									<input type="tel" name="PHONE[0][VALUE]" id="ke_small_phone" mask="+7 (999) 999 99 99" value="+79265766710" tooltip="Укажите телефон для связи <hr/>✓ Например: 8 123 456 78 90">
+    									<input type="hidden" name="PHONE[0][VALUE_TYPE]" value="WORK">
+                                    </label>
     							</section>
     							<section class="4u 12u(2)">
     								<label for="ke_small_name">
     									<span>Ваше имя:</span>
-    									<input type="text" id="ke_small_name" tooltip="Как к Вам обращаться? <hr/>
+    									<input type="text" name="NAME" id="ke_small_name" value="Иван" tooltip="Как к Вам обращаться? <hr/>
                                  ✓ Например: Иван Иванович">
     								</label>
     							</section>
@@ -185,30 +183,22 @@ pass 7F:pkQWJ
     						<div class="row">
     							<section class="6u 12u(2)">
     								<label for="ke_small_check">
-    									<input type="checkbox" id="ke_small_check">
-                          <span>Я согласен(согласна) с <a id="personal_data_condition">условиями обработки</a>
-                          моих персональных данных</span>
+    									<input type="checkbox" id="ke_small_check" checked="true">
+                                        <span>Я согласен(согласна) с <a id="personal_data_condition">условиями обработки</a>моих персональных данных</span>
     								</label>
     							</section>
     							<section class="6u 12u(2)">
     								<a class="button center" id="ke_small_submit">Отправить</a>
     							</section>
     						</div>
-                <div class="row">
-                  <section class="1u 12u(2) center not-mobile">
-                      <img src="images/icon/block.png" alt="" style="width: 100%; margin-top: 0.25em; max-width: 5em;">
-                  </section>
-                  <section class="11u 12u(2) small">
-                    <p>
-                      Группа Компаний не передает третьим лицам информацию, полученную при заполнении заявок.
-                      <a href="#" target="_blank">
-                        Правила обработки персональных данных
-                      </a>
-                      гарантируют защиту и конфиденциальность передаваемой
-                      информации.
-                    </p>
-                  </section>
-                </div>
+                            <div class="row">
+                                <section class="1u 12u(2) center not-mobile">
+                                    <img src="images/icon/block.png" alt="" style="width: 100%; margin-top: 0.25em; max-width: 5em;">
+                                </section>
+                                <section class="11u 12u(2) small">
+                                    <p>Группа Компаний не передает третьим лицам информацию, полученную при заполнении заявок. <a href="#" target="_blank">Правила обработки персональных данных</a> гарантируют защиту и конфиденциальность передаваемой информации.</p>
+                                </section>
+                            </div>
     					</div>
     				</section>
     			</div>
@@ -614,6 +604,8 @@ pass 7F:pkQWJ
                 <script src="js/cookie.js"></script>
                 <script src="js/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
                 <script src="js/jquery-ui-and-app.min.js"></script>
+                <script src="http://btx.renessbank.ru/js/vsb.portal.js"></script>
                 <script src="js/capital-express.js"></script>
+
 </body>
 </html>

@@ -247,14 +247,18 @@ $("#ke_scheludeClose").click(function () {
 });
 
 //form
+$("[name='UF_CRM_1450772521']").on("change",function(){
+	var t=$(this);
+	$("[name='UF_CRM_1450772521']").val(t.val());
+});
 $("#ke_small_type").change(function () {
-	if ($(this).val() == "Без залога") {
+	if ($(this).val() == "CD") {
 		$("#ke_small_auto").parent().hide();
 		$("#ke_small_build").parent().hide();
-	} else if ($(this).val() == "Залог недвижимости") {
+	} else if ($(this).val() == "CDN") {
 		$("#ke_small_auto").parent().hide();
 		$("#ke_small_build").parent().effect("slide");
-	} else {
+	} else if ($(this).val() == "CDA") {
 		$("#ke_small_build").parent().hide();
 		$("#ke_small_auto").parent().effect("slide");
 	}
@@ -604,4 +608,20 @@ $("#ke_srokSlider").find(".calcCounter:first").css({
 });
 $("#ke_srokSlider").find(".calcCounter:last").css({
 	marginLeft : -0.5 + "em"
+});
+
+
+//form submit
+$('#ke_small_submit').on('click',function(e){
+	e.preventDefault();
+	var form = $("#ke_form_small");
+	var params = {};
+
+	form.find("input,select").each(function(){
+		var t=$(this);
+		params[t.attr('name')]=t.val();
+	});
+	console.debug(params);
+	window.location.href = 'http://btx.renessbank.ru/bitrix24/leadadd?'+$.param(params);
+
 });
